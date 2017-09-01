@@ -50,13 +50,13 @@ Get-WsusServer | Get-WsusProduct | Where-Object -FilterScript { $_.product.title
 
 Write-Verbose "Enable Selected Products" -Verbose
 
-foreach ($enabled_product in ($enabled_products.Split(",")).trim(){
+foreach ($enabled_product in ($enabled_products.Split(",")).trim()){
 Get-WsusServer | Get-WsusProduct | Where-Object -FilterScript { $_.product.title -like "$enabled_product" } | Set-WsusProduct
 }
 
 Write-Verbose "Disable Selected Packs" -Verbose
 
-foreach ($disabled_product in ($disabled_products.Split(",")).trim(){
+foreach ($disabled_product in ($disabled_products.Split(",")).trim()){
 Get-WsusServer | Get-WsusProduct | Where-Object -FilterScript { $_.product.title -like "$disabled_product" } | Set-WsusProduct -disable
 }
 
