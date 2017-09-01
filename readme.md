@@ -23,16 +23,27 @@ Declare a module in your Terraform file, for example:
   `module "wsus" {`
 
   `source = "../localmodules/tf-aws-wsus"`
+
   `ami                    = "${data.aws_ami.windows.id}"`
+
   `userdata               = "${data.template_file.domain_connect_userdata.rendered}"`
+
   `instance_type          = "m4.large"`
+
   `subnet_id              = "${element(data.terraform_remote_state.vpc.private_subnets, 1)}"`
+
   `vpc_security_group_ids = ["${data.terraform_remote_state.mgmt.ads_sg_id}", "${data.terraform_remote_state.mgmt.mgmt_sg_id}"]`
+
   `vpc_id                 = "${data.terraform_remote_state.vpc.vpc_id}"`
+
   `envname                = "${var.envname}"`
+
   `envtype                = "${var.envtype}"`
+
   `customer               = "${var.customer}"`
+
   `key_name               = "bowser-test"`
+  
   `}`
 
 
