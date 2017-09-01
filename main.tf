@@ -26,7 +26,7 @@ resource "aws_instance" "wsus" {
 #instance profile
 
 module "wsus_iam_instance_profile" {
-  source = "../modules/tf-aws-iam-instance-profile"
+  source = "../tf-aws-iam-instance-profile"
 
   name        = "${var.customer}-wsus"
   ssm_managed = "1"
