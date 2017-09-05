@@ -13,6 +13,7 @@ $language="${language}"
 $enabled_products="${enabled_products}"
 $disabled_products="${disabled_products}"
 
+if (-not((Get-WindowsFeature -name UpdateServices).installstate -eq "Installed")){
 
 Install-WindowsFeature -Name UpdateServices -IncludeManagementTools
 New-Item -Path D: -Name WSUS -ItemType Directory
@@ -93,3 +94,4 @@ $subscription.NumberOfSynchronizationsPerDay=1
 $subscription.Save()
 
 $subscription.StartSynchronization()
+}
