@@ -22,6 +22,7 @@ data "template_file" "wsus" {
 
     #global settings
     language = "${var.language}"
+    timezone = "${var.timezone}"
 
     #products
     enabled_products  = "${var.enabled_products}"
