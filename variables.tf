@@ -92,5 +92,6 @@ variable "sg_name_overide" {
 }
 
 variable "wu_inbound_cidrs" {
-  default = ""
+  default = [""]
+  type    = "list"
 }
