@@ -82,3 +82,11 @@ variable "vpc_id" {}
 variable "vpc_security_group_ids" {
   type = "list"
 }
+
+variable "timezone" {
+  default = "GMT Standard Time"
+}
+
+variable "sg_name_overide" {
+  default = ""
+}

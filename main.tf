@@ -35,7 +35,7 @@ module "wsus_iam_instance_profile" {
 #wsus security group
 
 resource "aws_security_group" "wsus" {
-  name        = "${var.customer}-${var.envname}-wsus"
+  name        = "${var.sg_name_overide == "" ? "${var.customer}-${var.envname}-wsus":"${var.sg_name_overide}"}"
   vpc_id      = "${var.vpc_id}"
   description = "wsus security group"
 }
