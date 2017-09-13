@@ -90,3 +90,7 @@ variable "timezone" {
 variable "sg_name_overide" {
   default = ""
 }
+
+variable "wu_inbound_cidrs" {
+  default = ""
+}

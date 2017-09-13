@@ -46,7 +46,7 @@ resource "aws_security_group_rule" "wsus_in" {
   from_port         = "8530"
   to_port           = "8531"
   security_group_id = "${aws_security_group.wsus.id}"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = ["${var.wu_inbound_cidrs}"]
 }
 
 resource "aws_security_group_rule" "windows_update_80" {
