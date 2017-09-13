@@ -35,9 +35,13 @@ module "wsus_iam_instance_profile" {
 #wsus security group
 
 resource "aws_security_group" "wsus" {
-  name        = "${var.sg_name_overide == "" ? "${var.customer}-${var.envname}-wsus":"${var.sg_name_overide}"}"
+  name        = "wsus"
   vpc_id      = "${var.vpc_id}"
   description = "wsus security group"
+
+  tags {
+    Name = "${var.sg_name_overide == "" ? "${var.customer}-${var.envname}-wsus":"${var.sg_name_overide}"}"
+  }
 }
 
 resource "aws_security_group_rule" "wsus_in" {
