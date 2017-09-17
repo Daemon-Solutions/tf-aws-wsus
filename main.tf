@@ -3,7 +3,7 @@
 resource "aws_instance" "wsus" {
   ami                     = "${var.ami}"
   instance_type           = "${var.instance_type}"
-  user_data               = "<powershell>${data.template_file.additional_drive.rendered}${var.userdata}${data.template_file.wsus.rendered}</powershell><persist>true</persist>"
+  user_data               = "<powershell>${data.template_file.additional_drive.rendered}${data.template_file.wsus_domain_connect_userdata.rendered}${data.template_file.wsus.rendered}</powershell><persist>true</persist>"
   subnet_id               = "${var.subnet_id}"
   iam_instance_profile    = "${module.wsus_iam_instance_profile.profile_id}"
   vpc_security_group_ids  = ["${var.vpc_security_group_ids}", "${aws_security_group.wsus.id}"]
