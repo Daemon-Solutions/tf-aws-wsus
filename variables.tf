@@ -75,7 +75,6 @@ variable "envname" {}
 variable "envtype" {}
 variable "subnet_id" {}
 variable "key_name" {}
-variable "userdata" {}
 variable "customer" {}
 variable "vpc_id" {}
 
@@ -95,3 +94,19 @@ variable "wu_inbound_cidrs" {
   default = [""]
   type    = "list"
 }
+
+#domain join vars
+
+variable "region" {
+  default = "eu-west-1"
+}
+
+variable "ad_domain_user" {}
+variable "ad_domain_user_password" {}
+
+variable "dns_servers" {
+  type = "list"
+}
+
+variable "local_password" {}
+variable "ad_domain_name" {}

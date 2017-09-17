@@ -29,3 +29,16 @@ data "template_file" "wsus" {
     disabled_products = "${var.disabled_products}"
   }
 }
+
+data "template_file" "wsus_domain_connect_userdata" {
+  template = "${file("${path.module}/include/wsus_domain_join.tmpl")}"
+
+  vars {
+    region                  = "${var.region}"
+    ad_domain_user          = "${var.ad_domain_user}"
+    ad_domain_user_password = "${var.ad_domain_user_password}"
+    dns_servers             = "${element(var.dns_servers,0)},${element(var.dns_servers,1)}"
+    local_password          = "${var.local_password}"
+    ad_domain_name          = "${var.ad_domain_name}"
+  }
+}
