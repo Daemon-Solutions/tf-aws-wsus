@@ -1,3 +1,4 @@
+
 function ConnectToDomain() {
 	$domain = (Get-WmiObject -Class Win32_ComputerSystem).Domain
 	$newDomain = "${ad_domain_name}"
