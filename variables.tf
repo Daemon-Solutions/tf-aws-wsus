@@ -110,3 +110,7 @@ variable "dns_servers" {
 
 variable "local_password" {}
 variable "ad_domain_name" {}
+
+variable "userdata" {
+  default = ""
+}
