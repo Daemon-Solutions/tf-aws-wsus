@@ -119,3 +119,5 @@ variable "additional_tags" {
   type = "map"
   default = {}
 }
+
+variable "instance_profile" {}

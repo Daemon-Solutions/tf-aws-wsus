@@ -13,7 +13,7 @@ resource "aws_instance" "wsus" {
   instance_type           = "${var.instance_type}"
   user_data               = "<powershell>${data.template_file.additional_drive.rendered}${data.template_file.wsus_domain_connect_userdata.rendered}${data.template_file.wsus.rendered}${var.userdata}</powershell><persist>true</persist>"
   subnet_id               = "${var.subnet_id}"
-  iam_instance_profile    = "${module.wsus_iam_instance_profile.profile_id}"
+  iam_instance_profile    = "var.instance_profile"
   vpc_security_group_ids  = ["${var.vpc_security_group_ids}", "${aws_security_group.wsus.id}"]
   disable_api_termination = false
   key_name                = "${var.key_name}"
@@ -28,15 +28,6 @@ tags = "${merge(
     volume_size = "${var.drive_size}"
     volume_type = "gp2"
   }
-}
-
-#instance profile
-
-module "wsus_iam_instance_profile" {
-  source = "../tf-aws-iam-instance-profile"
-
-  name        = "${var.customer}-wsus"
-  ssm_managed = "1"
 }
 
 #wsus security group
