@@ -1,5 +1,13 @@
 #wsus instance
 
+locals {
+  common_tags = {
+    Name        = "wsus"
+    Environment = "${var.envname}"
+    Service     = "${var.envtype}"
+  }
+}
+
 resource "aws_instance" "wsus" {
   ami                     = "${var.ami}"
   instance_type           = "${var.instance_type}"
@@ -10,11 +18,10 @@ resource "aws_instance" "wsus" {
   disable_api_termination = false
   key_name                = "${var.key_name}"
 
-  tags {
-    Name        = "wsus"
-    Environment = "${var.envname}"
-    Service     = "${var.envtype}"
-  }
+tags = "${merge(
+    local.common_tags,
+    var.additional_tags
+  )}"
 
   ebs_block_device {
     device_name = "xvdca"

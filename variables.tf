@@ -114,3 +114,8 @@ variable "ad_domain_name" {}
 variable "userdata" {
   default = ""
 }
+
+variable "additional_tags" {
+  type = "map"
+  default= ""
+}
