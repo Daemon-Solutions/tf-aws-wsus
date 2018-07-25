@@ -14,7 +14,7 @@ function ConnectToDomain() {
 }
 
 net user administrator ${local_password}
-$newName = "wsus_2016"
+$newName = "wsus"
 if ( ([string]::Compare($newName, $env:computerName, $True) -ne 0) ) {
 	$rename = (Get-WmiObject -Class Win32_ComputerSystem).Rename($newName,"${local_password}",'Administrator').ReturnValue
   if ($rename -eq 0) {
