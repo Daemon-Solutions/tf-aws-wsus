@@ -117,5 +117,5 @@ variable "userdata" {
 
 variable "additional_tags" {
   type = "map"
-  default= ""
+  default = {}
 }
