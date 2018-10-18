@@ -13,6 +13,7 @@ $Upgrades="${upgrades}"
 $language="${language}"
 $enabled_products="${enabled_products}"
 $disabled_products="${disabled_products}"
+$targetingMode="${targeting_mode}"
 
 Set-TimeZone -Id "${timezone}"
 
@@ -36,6 +37,9 @@ Write-Verbose "Set Update Languages and save configuration settings" -Verbose
 $wsusConfig.AllUpdateLanguagesEnabled = $false           
 $wsusConfig.SetEnabledUpdateLanguages("$language")
 $wsusConfig.DownloadUpdateBinariesAsNeeded=$false
+
+Write-Verbose "Set whether to use GPO or manually move categories"
+$wsusConfig.TargetingMode = "$targetingMode"
 $wsusConfig.Save()
 
 Write-Verbose "Get WSUS Subscription and perform initial synchronization to get latest categories" -Verbose

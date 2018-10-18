@@ -69,6 +69,11 @@ variable "upgrades" {
   default = "0"
 }
 
+# WSUS targeting mode
+# Client = use GPO
+# Server = manually assign
+variable "targeting_mode" {}
+
 #environmentals
 
 variable "envname" {}
@@ -116,7 +121,7 @@ variable "userdata" {
 }
 
 variable "additional_tags" {
-  type = "map"
+  type    = "map"
   default = {}
 }
 
