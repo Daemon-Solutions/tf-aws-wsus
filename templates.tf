@@ -20,6 +20,9 @@ data "template_file" "wsus" {
     tools              = "${var.tools}"
     upgrades           = "${var.upgrades}"
 
+    # targeting mode
+    targeting_mode = "${var.targeting_mode}"
+
     #global settings
     language = "${var.language}"
     timezone = "${var.timezone}"
