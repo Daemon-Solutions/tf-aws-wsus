@@ -5,3 +5,7 @@ output "wsus_sg_id" {
 output "wsus_private_ip" {
   value = "${aws_instance.wsus.private_ip}"
 }
+
+output "wsus_instance_id" {
+  value = "${aws_instance.wsus.id}"
+}
