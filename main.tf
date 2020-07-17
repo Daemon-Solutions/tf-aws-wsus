@@ -18,16 +18,17 @@ resource "aws_instance" "wsus" {
   disable_api_termination = false
   key_name                = "${var.key_name}"
 
-tags = "${merge(
+  tags = "${merge(
     local.common_tags,
     var.additional_tags
   )}"
 
-  ebs_block_device {
-    device_name = "xvdca"
-    volume_size = "${var.drive_size}"
-    volume_type = "gp2"
+  root_block_device {
+    volume_size = "${var.root_volume_size}"
+    volume_type = "${var.root_volume_type}"
   }
+
+  ebs_block_device = "${var.extra_ebs_blocks}"
 }
 
 #wsus security group

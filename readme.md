@@ -1,7 +1,7 @@
 tf-aws-wsus
 ==========================
 
-This module is for implementing a WSUS server in AWS. The module is configured allows the configuration of classifications, and products. Additionally, a list of wildcards can be supplied to enable prodcuts, followed by a list of wildcards to disbale products. 
+This module is for implementing a WSUS server in AWS. The module is configured allows the configuration of classifications, and products. Additionally, a list of wildcards can be supplied to enable prodcuts, followed by a list of wildcards to disbale products.
 
 `The default product vars enable Windows 2008*, Windows 2012*, Windows 2016* , and disables the sub products of langauge and drivers.`
 
@@ -43,7 +43,7 @@ Declare a module in your Terraform file, for example:
   `customer               = "${var.customer}"`
 
   `key_name               = "bowser-test"`
-  
+
   `}`
 
 
@@ -66,8 +66,17 @@ Variables
 - `userdata`               - rendered userdata for domain join scripts etc
 - `language`               - default wsus language
     `default = "en"`
-- `drive_size`             - size of wsus storage drive
-    `default = "200"`
+- `extra_ebs_blocks`       - Additional EBS blocks to be attached to the instance
+    ```
+    default = [
+        {
+            # D:\ for WSUS storage
+            device_name = "xvdca"
+            volume_size = "200"
+            volume_type = "gp2"
+        }
+    ]
+    ```
 
 PRODUCTS
 - `enabled_products`       - list of Products to enable. Wildcards accepted

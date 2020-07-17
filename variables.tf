@@ -3,12 +3,12 @@
 variable "ami" {}
 variable "instance_type" {}
 
-#wsus enabled products 
+#wsus enabled products
 variable "enabled_products" {
   default = "windows server 2008*,windows server 2012*,windows server 2016*"
 }
 
-#wsus disabled products 
+#wsus disabled products
 variable "disabled_products" {
   default = "*language packs*,*drivers*"
 }
@@ -18,9 +18,26 @@ variable "language" {
   default = "en"
 }
 
-#wsus data drive size (GB)
-variable "drive_size" {
-  default = "200"
+#wsus root drive size (GB)
+variable "root_volume_size" {
+  default = "30"
+}
+
+#wsus root drive type
+variable "root_volume_type" {
+  default = "gp2"
+}
+
+# Extra volumes for data storage
+variable "extra_ebs_blocks" {
+  default = [
+    {
+      # D:\ for WSUS storage
+      device_name = "xvdca"
+      volume_size = "200"
+      volume_type = "gp2"
+    }
+  ]
 }
 
 #wsus classifications - at least on must be set to 1
