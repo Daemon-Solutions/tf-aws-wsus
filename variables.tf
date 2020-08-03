@@ -89,57 +89,92 @@ variable "upgrades" {
 # WSUS targeting mode
 # Client = use GPO
 # Server = manually assign
-variable "targeting_mode" {}
+variable "targeting_mode" {
+  type = string
+}
 
 #environmentals
 
-variable "envname" {}
-variable "envtype" {}
-variable "subnet_id" {}
-variable "key_name" {}
-variable "customer" {}
-variable "vpc_id" {}
+variable "envname" {
+  type = string
+}
+
+variable "envtype" {
+  type = string
+}
+
+variable "subnet_id" {
+  type = string
+}
+
+variable "key_name" {
+  type = string
+}
+
+variable "customer" {
+  type = string
+}
+
+variable "vpc_id" {
+  type = string
+}
 
 variable "vpc_security_group_ids" {
-  type = "list"
+  type = list(string)
 }
 
 variable "timezone" {
+  type    = string
   default = "GMT Standard Time"
 }
 
 variable "sg_name_overide" {
+  type    = string
   default = ""
 }
 
 variable "wu_inbound_cidrs" {
+  type    = list(string)
   default = [""]
-  type    = "list"
 }
 
 #domain join vars
 
 variable "region" {
+  type    = string
   default = "eu-west-1"
 }
 
-variable "ad_domain_user" {}
-variable "ad_domain_user_password" {}
-
-variable "dns_servers" {
-  type = "list"
+variable "ad_domain_user" {
+  type = string
 }
 
-variable "local_password" {}
-variable "ad_domain_name" {}
+variable "ad_domain_user_password" {
+  type = string
+}
+
+variable "dns_servers" {
+  type = list(string)
+}
+
+variable "local_password" {
+  type = string
+}
+
+variable "ad_domain_name" {
+  type = string
+}
 
 variable "userdata" {
+  type    = string
   default = ""
 }
 
 variable "additional_tags" {
-  type    = "map"
+  type    = map(string)
   default = {}
 }
 
-variable "instance_profile" {}
+variable "instance_profile" {
+  type = string
+}
